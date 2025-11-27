@@ -1,0 +1,112 @@
+{
+  "users": [
+    { "id": "u1", "name": "Alice", "preferences": ["Italian", "Vegetarian"] },
+    { "id": "u2", "name": "Bob", "preferences": ["Spicy", "Asian"] },
+    { "id": "u3", "name": "Charlie", "preferences": ["Fast Food", "Burgers"] }
+  ],
+  "restaurants": [
+    {
+      "id": "r1",
+      "name": "Luigi's Trattoria",
+      "cuisine": "Italian",
+      "location": "Downtown"
+    },
+    {
+      "id": "r2",
+      "name": "Spicy Dragon",
+      "cuisine": "Asian",
+      "location": "Uptown"
+    },
+    {
+      "id": "r3",
+      "name": "Burger Kingpin",
+      "cuisine": "Fast Food",
+      "location": "Midtown"
+    }
+  ],
+  "dishes": [
+    {
+      "id": "d1",
+      "name": "Margherita Pizza",
+      "restaurant_id": "r1",
+      "price": 12.0,
+      "attributes": ["Vegetarian"]
+    },
+    {
+      "id": "d2",
+      "name": "Spaghetti Carbonara",
+      "restaurant_id": "r1",
+      "price": 15.0,
+      "attributes": ["Contains Egg", "Contains Pork"]
+    },
+    {
+      "id": "d3",
+      "name": "Kung Pao Chicken",
+      "restaurant_id": "r2",
+      "price": 14.0,
+      "attributes": ["Spicy", "Contains Peanuts"]
+    },
+    {
+      "id": "d4",
+      "name": "Vegetable Stir Fry",
+      "restaurant_id": "r2",
+      "price": 11.0,
+      "attributes": ["Vegetarian", "Vegan"]
+    },
+    {
+      "id": "d5",
+      "name": "Classic Cheeseburger",
+      "restaurant_id": "r3",
+      "price": 10.0,
+      "attributes": ["Contains Dairy", "Contains Beef"]
+    },
+    {
+      "id": "d6",
+      "name": "Fries",
+      "restaurant_id": "r3",
+      "price": 5.0,
+      "attributes": ["Vegetarian", "Vegan"]
+    }
+  ],
+  "ingredients": [
+    { "id": "i1", "name": "Tomato Sauce" },
+    { "id": "i2", "name": "Mozzarella" },
+    { "id": "i3", "name": "Pasta" },
+    { "id": "i4", "name": "Egg" },
+    { "id": "i5", "name": "Pork" },
+    { "id": "i6", "name": "Chicken" },
+    { "id": "i7", "name": "Peanuts" },
+    { "id": "i8", "name": "Chili" },
+    { "id": "i9", "name": "Beef" },
+    { "id": "i10", "name": "Cheese" },
+    { "id": "i11", "name": "Potato" }
+  ],
+  "dish_ingredients": [
+    { "dish_id": "d1", "ingredient_ids": ["i1", "i2"] },
+    { "dish_id": "d2", "ingredient_ids": ["i3", "i4", "i5"] },
+    { "dish_id": "d3", "ingredient_ids": ["i6", "i7", "i8"] },
+    { "dish_id": "d4", "ingredient_ids": ["i8"] },
+    { "dish_id": "d5", "ingredient_ids": ["i9", "i10"] },
+    { "dish_id": "d6", "ingredient_ids": ["i11"] }
+  ],
+  "orders": [
+    {
+      "id": "o1",
+      "user_id": "u1",
+      "dish_ids": ["d1"],
+      "timestamp": "2023-10-01T12:00:00"
+    },
+    {
+      "id": "o2",
+      "user_id": "u2",
+      "dish_ids": ["d3"],
+      "timestamp": "2023-10-02T18:30:00"
+    },
+    {
+      "id": "o3",
+      "user_id": "u1",
+      "dish_ids": ["d4"],
+      "timestamp": "2023-10-05T19:00:00"
+    }
+  ]
+}

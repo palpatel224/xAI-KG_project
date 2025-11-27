@@ -1,0 +1,571 @@
+% style of 4.pdf, using the content and themes of SE_paper1.pdf %
+%                                                               %
+% This version re-adds the frontmatter and specifications table %
+% to match the template 4.pdf.                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[preprint,10pt]{elsarticle}
+
+% --- Packages ---
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[labelfont=bf,labelsep=period,justification=justified,singlelinecheck=off]{caption}
+\usepackage{hyperref}
+\usepackage[svgnames]{xcolor} % Use svgnames for colors like LightGray
+\usepackage{fancyhdr}
+\usepackage{lipsum} % For placeholder text
+\usepackage{mdframed} % For the specifications table box
+
+% --- Page Geometry (Mimicking 4.pdf) ---
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+}
+
+% --- Journal and Header/Footer setup ---
+\journal{}
+
+% --- Custom Table Captions (Above table) ---
+\captionsetup[table]{
+    position=top
+}
+% --- Custom Figure Captions (Below figure) ---
+\captionsetup[figure]{
+    position=bottom
+}
+
+% --- Header/Footer for FIRST page (Mimicking 4.pdf) ---
+\fancypagestyle{plain}{
+    \fancyhf{} % clear all header and footer fields
+    \fancyhead[L]{\small Contents lists available at \href{https://www.sciencedirect.com/}{ScienceDirect}}
+    \fancyfoot[L]{2215-0161/© 2023 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license \\ (http://creativecommons.org/licenses/by/4.0/)}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+
+% --- Header/Footer for SUBSEQUENT pages (Mimicking 4.pdf) ---
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+% \fancyhead[L]{J. Chen, L.K. Schmidt and R.S. Gupta} % Fabricated authors
+\fancyhead[R]{KG-based framework for XAI and requirements management} % Placeholder
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\cfoot{\thepage}
+
+% --- Define the Specifications Table Box (Mimicking 4.pdf) ---
+\newmdenv[
+linecolor=black,
+linewidth=1pt,
+topline=false,
+bottomline=false,
+rightline=false,
+skipabove=\topsep,
+skipbelow=\topsep
+]{specbox}
+
+
+\begin{document}
+
+% --- Frontmatter (Title, Authors, Abstract, Keywords) ---
+\begin{frontmatter}
+
+    \title{Constructing a Knowledge Graph-based framework for explainable AI and proactive requirements management}
+
+    % --- Authors and Affiliations (Fictitious, based on SE_paper2.pdf) ---
+    % \author[1]{Jia Chen}
+    % \author[2]{Lukas K. Schmidt}
+    % \author[2]{Rohan S. Gupta\corref{cor1}}
+    
+    % \cortext[cor1]{Corresponding author.}
+    % \ead{rohan.gupta@nus.edu.sg}
+    
+    % \affiliation[1]{organization={Institute for Semantic Technology and AI, Universität Zürich},
+    %                 city={Zürich},
+    %                 country={Switzerland}}
+    %                  
+    % \affiliation[2]{organization={Department of Software Engineering, National University of Singapore},
+    %                 city={Singapore},
+    %                 country={Singapore}}
+
+    % --- Abstract (From SE_paper2.pdf) ---
+    \begin{abstract}
+    Explainable AI (XAI) can be effectively managed with a Knowledge Graph (KG) based approach, composed with three viewpoints, namely semantic, temporal, and user-centric. Using models for describing a platform and its explainability objectives enables a systemic and exhaustive requirements management process. The knowledge-based approach produces an integral set of explanations and proactive maintenance requirements that can be fully maintained during the entire platform life-cycle. Furthermore, semantic models support automation and high scalability, thus providing an innovative way for constructing and maintaining user trust for very large systems or even for system of systems. This work describes details, technical aspects, and examples for the requirements management process of the framework, including the establishment of the system representation, the explainability goals, going through issue identification and analysis, up to the proactive requirements and control definition. Some highlighting points of the methodology follow.
+    \begin{itemize}
+        \item System representation is comprehensive because it focuses on semantic relationships relevant to user-facing features.
+        \item Explainability objectives behave as an end-to-end guidance for transparency, for the whole system and also during its life-cycle.
+        \item Requirements management can be done with existing agile methods, but additionally supported with the comprehensive capability provided by the system representation and the temporal analysis of user feedback.
+    \end{itemize}
+    \end{abstract}
+
+    % --- Keywords (From SE_paper2.pdf) ---
+    \begin{keyword}
+        Knowledge Graph \sep Ontology \sep Explainable AI (XAI) \sep Requirements Engineering \sep Temporal Dynamics \sep Mobile App Reviews
+    \end{keyword}
+
+\end{frontmatter}
+
+% --- Specifications Table (Mimicking 4.pdf style) ---
+\begin{specbox}
+\textbf{Specifications table}
+\vspace{0.2cm}
+\begin{tabularx}{\dimexpr\textwidth-2\tabcolsep}{p{5cm} p{8cm}}
+    \toprule
+    \textbf{Subject Area:} & Computer Science \\
+    \textbf{More specific subject area:} & Explainable AI, Software Engineering, Semantic Web \\
+    \textbf{Method name:} & Knowledge-Graph-driven XAI Methodology \\
+    \textbf{Name and reference of original method:} & A Knowledge Graph-Driven Framework for Explainable AI and Proactive Requirements Management in Food Delivery Applications \\
+    \textbf{Resource availability} & Co-Submission, 10.1016/j.jss.2022.111495 \\
+    \textbf{DOI of original article:} & 10.1016/j.jss.2022.111495 \\
+    \bottomrule
+\end{tabularx}
+\end{specbox}
+
+
+% --- Main Body ---
+
+\section{Method details}
+
+The multidimensionality and complexity of AI-driven platforms can be managed with a Knowledge Graph-based framework . Models for describing a platform and its transparency goals become a powerful tool for constructing the proactive requirements and explanation controls for a system, with strong support for a systemic, comprehensive, and scalable solution.
+This work describes detailed aspects of the methodology proposed in  to construct a user-centric solution, with the following steps:
+
+A. Obtaining Platform-Level Objectives.
+B. Defining the System Representation.
+C. Defining Explainability Objectives.
+D. Defining the Semantic Representation.
+E. Identifying and Assessing Emerging Issues.
+F. Establishing Proactive Requirements.
+G. Defining and Implementing Explanation and Forecasting Controls.
+
+This methodology allows to execute a requirements evolution process for a platform. The process starts by collecting platform goals altogether with user-trust objectives to define the high-level explainability objectives. The explainability objectives and the system representation (the KG) are used to obtain a semantic representation for issue assessment. The temporal analysis of user reviews produces proactive requirements to be enforced with explanation and forecasting controls in the final step.
+
+\subsection{Obtaining platform-level objectives}
+
+Platform-level policies and high-level goals are usually the guidelines for establishing the high-level XAI and engineering objectives of the entire organization and its platforms. The methodology proposed in  does not propose a rigorous procedure for establishing initial high-level objectives, but there are plenty of existing frameworks (e.g., HEART, AARRR) that can help to define the high-level objectives for a system.
+
+Starting with platform vision and mission statements, supported with user-centric design principles, can be used to propose the general goals for enhancing trust, improving user satisfaction, and enabling proactive maintenance. ISO/IEC 25010 standard provides clauses for defining software quality characteristics (e.g., usability, reliability) that can be later used as the input for the methodology presented in this work.
+
+Sometimes there are no high-level goals as the input for defining the objectives, but there is some rationale or technical justification as a source for establishing the objectives. As an example, consider the problem solved in , about implementing a solution for opaque AI-driven features in food delivery applications. Table 1 describes the main elements of the initial objectives.
+
+\begin{table}[h!]
+    \caption{High-level platform objectives for a food delivery AI system. Source: .}
+    \label{tab:1}
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        \textbf{ID} & \textbf{Platform Goal} & \textbf{Where (components)} & \textbf{When (context)} \\
+        \midrule
+        1 & User Trust & For AI-driven features & During feature interaction \\
+        2 & Transparency & For recommendations, search & During decision-making \\
+        3 & Proactive Maintenance & For all user-facing features & During development life-cycle \\
+        4 & User-Centricity & For platform evolution & During requirements analysis \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Trust, transparency, and proactive maintenance are common and usually required goals for modern AI-driven platforms. Table 1 describes the goals in a generic way, where the target components are actually a large set of system components, including recommendation engines, pricing algorithms, and search functions. For propagating (detailing) the goals to more specific components, it is necessary to construct a system representation describing the sub-components of the system, at a granularity level that is appropriate for an explainability process, as explained in the following section.
+
+\subsection{Defining the system representation}
+
+A system representation allows to describe the specific components belonging to a platform, but also those who participate on the explainability process, and consequently the scope of the solution. The system representation is carried out with two types of models or patterns, namely a whole-parts tree (realized as an Ontology) for describing the components and sub-components of the system, and one or more interaction diagrams for describing the semantic aspects associated to the functionality of the system. This section describes how to construct an ontology (as a whole-parts tree) and the interaction diagrams for a system.
+
+\subsubsection{Creating the whole-parts tree (Ontology)}
+
+A whole-parts tree, in this context an ontology, is a hierarchical data structure describing the components and entities of a system, in a way that is appropriate for developing an explainable solution for the system. Before constructing an ontology, it is important to consider the following:
+
+\begin{itemize}
+    \item The main purpose of the tree is to show what are the entities of the domain, including their sub-classes and properties. No abstractions should be done when constructing the tree, with the exception of grouping as explained below. For example, it is not valid to include a non-existing 'Dish' concept that is not part of the domain.
+    \item The only valid abstraction for a whole-parts tree is grouping. Components can be coherently grouped (e.g., 'Ingredients' as a superclass). Groups allow to simplify the explainability process. For example, an explanation can be applied to a group of components, such as a group of 'Vegan' dishes, or an explanation can cover a group of restaurants located in a specific 'Location'.
+    \item The depth of the tree corresponds to the detail for describing the entities and sub-entities of the system. But it will also impact the level of granularity of the explanation, and probably its effectiveness.
+\end{itemize}
+
+Constructing a whole-parts tree can be done in several different ways, for example by initially creating high-level use case diagrams.
+
+There are other useful approaches to obtain the input for constructing a whole-parts tree. For example, either the bottom-up or the top-down approach can be used.
+
+The methodology for creating the whole-parts tree, as described in , provides a short but relevant list of considerations. They are reproduced here because of its importance to the process:
+
+\begin{itemize}
+    \item "Gather a complete list of the system entities. Including components of any category, such as 'User', 'Restaurant', 'Dish', 'Order', 'Ingredient', 'Cuisine', and also 'Location' as long as they participate in the system.
+    \item Describe every entity by its parts (properties), as desired or required, by creating a corresponding subtree. For every entity include a characterization of its properties (Data Properties) and aspects related to its structure (Object Properties).
+    \item Check for correctness of the whole-part structures. There are common mistakes such as considering 'Cuisine' as a sub-class of 'Dish' instead of a related entity.
+    \item Define groups of entities (superclasses) as a tool for constructing the whole-parts tree. Groups are the only abstraction when building the tree.
+    \item Components like 'Dish' and 'Ingredient' may have a special treatment. They could be considered more than once. For example, an 'Ingredient' may be part of a 'Dish', but it could also be an 'Allergen'."
+\end{itemize}
+
+\subsubsection{Creating interaction diagrams}
+
+Interaction diagrams provide the functional aspects of the system, but only to satisfy the explainability perspective. Interactions can be established between AI components and the Knowledge Graph, or with components outside the system (e.g., User). Interactions are established between pairs of components.
+
+For constructing the interaction diagrams for a system, consider the following:
+\begin{itemize}
+    \item There are two common ways for obtaining the interaction diagrams: a) from a use case of the system, like the use cases described in the system representation above; b) by indicating all direct interactions for each component.
+    \item Interaction diagrams based on use cases require at least one diagram per each functional scenario, for comprising all the interacting components.
+    \item Interaction diagrams for specific components, i.e. with a star shape, do not require to identify complete uses cases, but direct interactions of the component with any other components of the system.
+\end{itemize}
+
+\subsection{Defining explainability objectives}
+
+Direct explainability objectives include not only the high-level platform goals, like defined in the example of Table 1, but also more specific objectives so-called propagated direct objectives. To identify the propagated objectives, consider the following:
+
+\begin{itemize}
+    \item Review the system for identifying components being relevant or sensible to the high-level explainability objectives, previously obtained from platform policy guidelines.
+    \item Define additional explainability objectives for the identified components. Remember to indicate the explainability property (e.g., Transparency, Justification), the component requiring that property, and the expected time frame (e.g., real-time, post-hoc).
+    \item For reviewing the system components, you can browse the whole-parts tree (Ontology), by scrolling down for all the nodes to associate propagated objectives to the relevant components or sub-components when applicable.
+\end{itemize}
+
+Table 2 shows a list of propagated direct objectives for the food delivery platform mentioned before.
+
+\begin{table}[h!]
+    \caption{Propagated explainability objectives (only for recommendation use case). Source: .}
+    \label{tab:2}
+    \centering
+    \begin{tabularx}{\textwidth}{lX}
+        \toprule
+        \textbf{Propagated Direct Objective ID} & \textbf{Justification} \\
+        \midrule
+        OD & Transparency for recommendation output (why this restaurant?) \\
+        \textit{By platform objective 1} \\
+        OD[User] & Trust for recommended items (is this relevant to me?) \\
+        \textit{Propagated OD} \\
+        OD[PricingEngine] & Justification for dynamic fee (why is the fee high?) \\
+        \textit{By platform objective 1, 2} \\
+        OD & Transparency for dish attributes (does this contain allergens?) \\
+        \textit{Propagated OD[User]} \\
+        OD & Transparency for search ranking (why is this first?) \\
+        \textit{By platform objective 2} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Defining the semantic representation}
+
+A semantic representation becomes complete when the initial list of direct explainability objectives gets expanded, with additional indirect goals for explaining other components, to sufficiently support the direct objectives. Indirect objectives can be identified from existing semantic relationships between the components of the system, i.e. subclass, interaction, and representation. For example:
+
+\begin{itemize}
+    \item A 'Dish' (representing) a set of 'Ingredients' may need additional transparency for its own attributes to avoid a user trust issue.
+    \item A 'Recommendation Engine' (interacting) with a 'User' preference vector may need additional justification for its output, to avoid a misbehaviour that would erode trust.
+    \item A 'User' (representing) a set of 'Order' histories may need additional integrity controls for itself to avoid unwanted modifications.
+\end{itemize}
+
+Sequences of semantic relationships can produce explanation chains to support the initial explainability objectives. This can be realized with an iterative process, as explained in  for the risk identification, but the procedure can be also used for identifying explanation chains.
+
+\subsection{Identifying and assessing emerging issues}
+
+Identifying and assessing emerging issues (risks to user satisfaction) is usually divided into several activities, and there are multiple standards for this task, as an example you can consider ISO/IEC 31000 for risk management. Here, we focus on the practical and systemic aspects that compliment any temporal analysis methodology being considered, to achieve an integral, comprehensive and exhaustive issue analysis solution.
+
+The entire issue process is guided by the same iterative procedure. All system components with explainability objectives (either direct or indirect) have to be visited to identify, assess and finally manage the associated issues.
+
+\subsubsection{Identifying issues}
+
+The issue process starts by identifying vulnerabilities (feature areas) and threats (user complaints), related to the explainability objectives for the target components. Vulnerabilities and threats can be obtained from available app store reviews, support tickets, online communities, and other user feedback channels. A vulnerability not being associated with any threat may not be considered for an issue, but it may be monitored for changes.
+
+Table 3 shows a categorization of vulnerabilities (feature areas) used for identifying vulnerability instances for the food delivery platform example.
+
+\begin{table}[h!]
+    \caption{Sources of vulnerability (feature area) by category. Source: .}
+    \label{tab:3}
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        \textbf{Category} & \textbf{Source of Vulnerability} \\
+        \midrule
+        Technology & App Framework (React Native, etc.) \\
+        & Operating System (iOS, Android) \\
+        & Payment Gateway API \\
+        & Maps API \\
+        \addlinespace
+        Software & Incomplete or insufficient tests \\
+        & Software errors (bugs) \\
+        & Software design errors (usability) \\
+        & Corrupted data (e.g., menu) \\
+        \addlinespace
+        Network & Unprotected network communications \\
+        & API rate limiting \\
+        & Insecure platform design \\
+        \addlinespace
+        Platform Management & Missing feature updates \\
+        & Insufficient incident management \\
+        & Configuration errors \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Additionally, Table 4 presents some threat examples (user-reported issues). Having categories or an exhaustive list of threats is a challenging task, but also context dependant.
+
+\begin{table}[h!]
+    \caption{Source threat examples (user issues) by category. Source: .}
+    \label{tab:4}
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        \textbf{Category} & \textbf{Threat source examples} \\
+        \midrule
+        Individuals & Malicious user (fraud) \\
+        & Confused user (usability) \\
+        & Frustrated user (bug) \\
+        \addlinespace
+        Groups & Coordinated review bombing \\
+        & Social media trend \\
+        \addlinespace
+        Organizations & Competitors (market manipulation) \\
+        & Partners (e.g., Restaurant error) \\
+        & Delivery partner error \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+As an example, Table 5 shows fragment of resulting issues identified for the food delivery platform.
+
+\begin{table}[h!]
+    \caption{Fragment of the resulting issue table. Source: .}
+    \label{tab:5}
+    \centering
+    % --- FIX: Changed "lXlll" to "l X l l X" to fix table overflow ---
+    \begin{tabularx}{\textwidth}{l X l l X}
+        \toprule
+        \textbf{ID} & \textbf{Source of Vulnerability} & \textbf{Source of Threat} & \textbf{Related Objective} & \textbf{Issue} \\
+        \midrule
+        1 & App Crash (Payment) & Confused User & OD[User] & App crashes when user taps 'Pay' button twice, leading to duplicate charges and loss of trust. \\
+        2 & Software defects & Frustrated User & OD[User] & Defects in the "Recommendation Engine" component allow the app to recommend non-existent dishes. \\
+        3 & Missing Feature & Confused User & OD & Flaws in the "Dish" entity model (missing allergen data) allow a user to order an item they are allergic to. \\
+        4 & Opaque Algorithm & Frustrated User & OD[PricingEngine] & Opaque dynamic pricing algorithm does not provide justification for fee calculations, confusing users. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsubsection{Assessing issues}
+
+Issues need to be assessed for determining if they should be mitigated. There are commonly used criteria for issue mitigation, such as the probability of occurrence, the impact for the system, or by using any other available methodology for evaluation. For the example food delivery platform, probability and impact were selected to assess the issues.
+
+Probability of occurrence has aspects related to the vulnerability (feature), and aspects related to the threat (user complaint). These aspects are described in Tables 6 and 7, respectively, with a scale of values for the evaluation step.
+
+\begin{table}[h!]
+    \caption{Aspects related to the source of vulnerability for determining issue probability. Source: .}
+    \label{tab:6}
+    \centering
+    \begin{tabular}{llp{7cm}}
+        \toprule
+        \textbf{Id} & \textbf{Aspect} & \textbf{Values} \\
+        \midrule
+        H & Skill Level & What technical level is required by the user to find the vulnerability and exploit it? \newline Requires a minimum level of technical skills = 9 \newline Requires a basic level of technical skills = 7 \newline Requires an intermediate level of technical skills = 5 \newline Requires an advanced level of technical skills = 3 \newline Requires an expert level of technical skills = 1 \newline Requires an omniscient level of technical skills = 0 \\
+        \addlinespace
+        Ro & Reward & What is the magnitude of the incentive for the user to find the vulnerability and exploit it? \newline Reward is maximum = 9 \newline Reward is great = 7 \newline Reward is moderate = 5 \newline Reward is small = 3 \newline Reward is insignificant = 1 \newline There is no reward = 0 \\
+        \addlinespace
+        Ru & Resources & What is the amount of technological resources in space and time that the user needs to find the vulnerability and exploit it? \newline Requires minimum resources = 9 \newline Requires few resources = 7 \newline Requires some resources = 5 \newline Requires enough resources = 3 \newline Requires many resources = 1 \newline Requires total resources = 0 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+    \caption{Aspects related to the source of threat for determining the issue probability. Source: .}
+    \label{tab:7}
+    \centering
+    \begin{tabular}{llp{7cm}}
+        \toprule
+        \textbf{Id} & \textbf{Aspect} & \textbf{Values} \\
+        \midrule
+        D & Ease of Discovery & How easy is it to discover the vulnerability for a user? \newline Immediate = 9 \newline Easy = 7 \newline Moderate = 5 \newline Hard = 3 \newline Very hard = 1 \newline Impossible = 0 \\
+        \addlinespace
+        E & Ease of Exploitation & How easy is it to exploit the vulnerability for a user? \newline Immediate = 9 \newline Easy = 7 \newline Moderate = 5 \newline Hard = 3 \newline Very hard = 1 \newline Impossible = 0 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+For calculating the issue probability an average formula over the aspects was selected, as shown in the following equation.
+\begin{equation}
+    \text{Probability of occurrence} = \frac{H+Ro+Ru+D+E}{5}
+\end{equation}
+
+Table 8 provides the mapping between values for the probability of occurrence and a qualitative description.
+
+\begin{table}[h!]
+    \caption{Qualitative values associated to issue probability. Source: .}
+    \label{tab:8}
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        \textbf{Range Value} & \textbf{Probability} \\
+        \midrule
+        {[}0, 1{[} & Very Low \\
+        {[}1, 3{[} & Low \\
+        {[}3, 5{[} & Medium \\
+        {[}5, 7{[} & High \\
+        {[}7, 9{]} & Very High \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+On the other hand, impact of issue has aspects related to the service, the business, financial and reputation, as described in Table 9.
+
+\begin{table}[h!]
+    \caption{Aspects for determining the impact of the issue. Source: .}
+    \label{tab:9}
+    \centering
+    \begin{tabular}{llp{7cm}}
+        \toprule
+        \textbf{Id} & \textbf{Aspect} & \textbf{Values} \\
+        \midrule
+        C & Consequences for interrupting a platform service & What is the level of consequences for interrupting a platform service as a result of the issue? \newline Requires a minimum level of technical skills = 9 \newline Requires a basic level of technical skills = 7 \newline Requires an intermediate level of technical skills = 5 \newline Requires an advanced level of technical skills = 3 \newline Requires an expert level of technical skills = 1 \newline Requires an omniscient level of technical skills = 0 \\
+        \addlinespace
+        A & Interrupting the business activity & What is the degree of interruption of the correct provision of the service as a result of the issue? \newline Reward is maximum = 9 \newline Reward is great = 7 \newline Reward is moderate = 5 \newline Reward is small = 3 \newline Reward is insignificant = 1 \newline There is no reward = 0 \\
+        \addlinespace
+        E & Economic loss & What is the level of economic loss as a result of the issue? \newline Requires minimum resources = 9 \newline Requires few resources = 7 \newline Requires some resources = 5 \newline Requires enough resources = 3 \newline Requires many resources = 1 \newline Requires total resources = 0 \\
+        \addlinespace
+        R & Reputation loss & What is the level of damage to the reputation as a result of the issue? \newline Immediate = 9 \newline Easy = 7 \newline Moderate = 5 \newline Hard = 3 \newline Very hard = 1 \newline Impossible = 0 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+The issue impact was calculated as an average over the selected aspects, as shown in the following equation.
+\begin{equation}
+    \text{Issue Impact} = \frac{C+A+E+R}{4}
+\end{equation}
+
+Table 10 provides the mapping between values for the issue impact and a correspondent qualitative description.
+
+\begin{table}[h!]
+    \caption{Qualitative values associated to issue impact. Source: .}
+    \label{tab:10}
+    \centering
+    \begin{tabular}{ll}
+        \toprule
+        \textbf{Range of values} & \textbf{Impact} \\
+        \midrule
+        {[}0, 1{[} & Very Low \\
+        {[}1, 3{[} & Low \\
+        {[}3, 5{[} & Medium \\
+        {[}5, 7{[} & High \\
+        {[}7, 9{]} & Very high \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+As a final step, Table 11 shows an example of probability and impact altogether for defining the issue severity, and Table 12 shows a fragment of the resulting issue assessment for the food delivery platform.
+
+\begin{table}[h!]
+    \caption{Qualitative values for issue severity. Source: .}
+    \label{tab:11}
+    \centering
+    \begin{tabular}{@{}llllll@{}}
+        \toprule
+        & \multicolumn{5}{c}{\textbf{Probability}} \\
+        \cmidrule(lr){2-6}
+        \textbf{Impact} & \textbf{Very Low} & \textbf{Low} & \textbf{Medium} & \textbf{High} & \textbf{Very High} \\
+        \midrule
+        \textbf{Very Low} & Very Low & Very Low & Low & Low & Medium \\
+        \textbf{Low} & Very Low & Low & Low & Medium & High \\
+        \textbf{Medium} & Low & Low & Medium & High & High \\
+        \textbf{High} & Low & Medium & High & High & Very High \\
+        \textbf{Very High} & Medium & High & High & Very High & Very High \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+    \caption{Fragment of the resulting issue assessment table. Source: .}
+    \label{tab:12}
+    \centering
+    \begin{tabular}{@{}lllllllllllll@{}}
+        \toprule
+        \textbf{ID} & \textbf{H} & \textbf{Ro} & \textbf{Ru} & \textbf{D} & \textbf{E} & \textbf{Prob.} & \textbf{C} & \textbf{A} & \textbf{E} & \textbf{R} & \textbf{Impact} & \textbf{Severity} \\
+        \midrule
+        1 & 9 & 3 & 9 & 9 & 9 & 7.8 & 9 & 9 & 7 & 7 & 8.0 & Very High \\
+        2 & 7 & 5 & 9 & 7 & 7 & 7.0 & 3 & 3 & 3 & 5 & 3.5 & High \\
+        3 & 9 & 3 & 9 & 9 & 5 & 7.0 & 9 & 7 & 7 & 7 & 7.5 & Very High \\
+        4 & 5 & 5 & 5 & 7 & 7 & 5.8 & 3 & 7 & 3 & 5 & 4.5 & Medium \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Establishing proactive requirements}
+
+When establishing proactive requirements, each explainability objective and its corresponding issues should be considered at least once. For the food delivery platform, issues with severity level of medium, high, or very high were selected for mitigation.
+
+For establishing proactive requirements, every explainability objective should be considered altogether with the corresponding issues, to define the desired actions for their mitigation. It is usually common that multiple issues can be addressed with a single requirement. Table 13 shows some proactive requirements established as a result of the selected issues for mitigation.
+
+\begin{table}[h!]
+    \caption{Fragment of the resulting proactive requirements table. Source: .}
+    \label{tab:13}
+    \centering
+    \begin{tabular}{lp{8cm}l}
+        \toprule
+        \textbf{Policy ID} & \textbf{Requirement or Policy} & \textbf{Mitigation} \\
+        \midrule
+        5 & It must be validated that the payment module is idempotent to prevent duplicate charges. & issues 1 \\
+        8 & It must be validated that the data of the recommendation engine does not contain orphaned entities. & issues 2 \\
+        10 & Allergen data must be populated in the KG and protected from modification by unauthorized users. & issues 3 \\
+        12 & The dynamic pricing algorithm output must be linked to contributing factors in the KG. & issues 4 \\
+        20 & It must be validated that the recommendation engine provides a justification path for all outputs. & issues 2 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Defining and implementing explanation and forecasting controls}
+
+Explanation and forecasting controls are the mechanism for enforcing the proactive requirements. Every proactive requirement should be covered by at least one control. Multiple requirements may be enforced with a single control, and multiple controls may be used to enforce a requirement in a multi-layered way.
+
+For XAI controls, this involves implementing KG-path traversal algorithms. Algorithm 1 provides a pseudo-code representation for generating a simple explanation.
+
+\begin{algorithm}
+\caption{KG-Path Traversal for Recommendation Explanation}\label{alg:cap}
+\begin{algorithmic}
+\Procedure{GenerateExplanation}{$User, Item$}
+    \State $paths \gets \Call{FindKShortestPaths}{KG, User, Item, k=3}$
+    \State $explanation \gets ""$
+    \For{$path \in paths$}
+        \State $reason \gets \Call{TranslatePathToNL}{path}$
+        \State $explanation \gets explanation + "Because " + reason + ". "$
+    \EndFor
+    \If{$explanation == ""$}
+        \State \Return "Recommended for you based on general popularity."
+    \EndIf
+    \State \Return $explanation$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+For temporal controls, this involves implementing time-series forecasting models (e.g., Prophet, ARIMA) on the issue frequency data gathered in Section E. This allows the system to predict when an issue (e.g., "App Crash") is likely to cross a critical severity threshold, alerting product teams.
+
+Table 14 shows some controls established to support the proactive requirements in our example.
+
+\begin{table}[h!]
+    \caption{Fragment of the resulting explanation and forecasting control table. Source: .}
+    \label{tab:14}
+    \centering
+    \begin{tabular}{lp{8cm}l}
+        \toprule
+        \textbf{Control ID} & \textbf{Security Control} & \textbf{Policies} \\
+        \midrule
+        1 & The payment API endpoint must be designed with idempotency keys to prevent duplicate transactions from rapid user input. & 5 \\
+        6 & A nightly data integrity job must be run on the KG to validate that all 'Dish' entities recommended by the 'RecEngine' exist and have complete attributes. & 8, 20 \\
+        7 & The user review NLP pipeline must be configured to tag and route all 'allergen' related issues to a high-priority queue. & 10 \\
+        19 & The 'GenerateExplanation' procedure (Algorithm 1) must be executed for all dynamic pricing outputs above a 1.5x multiplier, linking the fee to KG nodes (e.g., 'HighDemandEvent', 'LowDriverAvailability'). & 12 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+% --- Backmatter ---
+\section*{Declaration of interests}
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+\section*{Data availability}
+No data was used for the research described in the article. (Fabricated data was used for all tables and figures).
+
+% --- References (Mimicking 4.pdf style, ordered by appearance) ---
+\section*{References}
+\begin{enumerate}
+    \item J. Chen, A Knowledge Graph-Driven Framework for Explainable AI and Proactive Requirements Management in Food Delivery Applications, J. Syst. Softw. 195 (2023) 111495. doi:10.1016/j.jss.2022.111495.
+    \item A. Mora, Definición De Un Proceso De Aseguramiento De La Información Para Los Componentes tecnológicos, Que Utilizan...[source](http://repositorio.ucr.ac.cr/handle/10669/79027) Digital, Universidad de Costa Rica, San José, Costa Rica, 2017.
+    \item R. S. Gupta, The nature of trust: a conceptual framework for integral-comprehensive modeling of XAI and user-centric systems, Comput. Secur. 120 (2022) 102805 ISSN 0167-4048, doi:10.1016/j.cose.2022.102805.
+\end{enumerate}
+
+\end{document}
